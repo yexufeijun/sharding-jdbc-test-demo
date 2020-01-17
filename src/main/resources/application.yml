@@ -1,0 +1,8 @@
+logging:
+    level:
+        root: info
+mybatis-plus:
+    mapperLocations: classpath:mapper/*.xml
+spring:
+    profiles:
+        active: sharding-datasource

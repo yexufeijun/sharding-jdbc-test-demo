@@ -1,0 +1,27 @@
+spring:
+  shardingsphere:
+    datasource:
+      ds0:
+        driver-class-name: oracle.jdbc.driver.OracleDriver
+        password:
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:oracle:thin:@XXXX:1521:XX
+        username:
+      ds1:
+        driver-class-name: oracle.jdbc.driver.OracleDriver
+        password:
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:oracle:thin:@XXXX:1521:XX
+        username:
+      names: ds0,ds1
+    props:
+      sql:
+        show: true
+
+    sharding:
+      tables:
+        test_sharding_a:
+          database-strategy:
+            inline:
+              algorithm-expression: ds$->{id % 2}
+              sharding-column: id
